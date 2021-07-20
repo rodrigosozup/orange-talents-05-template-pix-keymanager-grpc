@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.keymanagergrpc";
+option java_outer_classname = "Keymangergrpc";
+option objc_class_prefix = "HLW";
+
+package br.com.keymanagergrpc;
+
+service KeymangergrpcService {
+  rpc send (KeymangergrpcRequest) returns (KeymangergrpcReply) {}
+}
+
+message KeymangergrpcRequest {
+  string name = 1;
+}
+
+message KeymangergrpcReply {
+  string message = 1;
+}
