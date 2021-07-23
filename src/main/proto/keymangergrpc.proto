@@ -3,18 +3,43 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "br.com.keymanagergrpc";
 option java_outer_classname = "Keymangergrpc";
-option objc_class_prefix = "HLW";
 
 package br.com.keymanagergrpc;
 
-service KeymangergrpcService {
-  rpc send (KeymangergrpcRequest) returns (KeymangergrpcReply) {}
+/*Declara um serviço para que outros sistemas possam consumir*/
+service KeymangerRegistraGrpcService {
+  rpc registra (RegistraChavePixRequest) returns (RegistraChavePixResponse){}
+}
+//Enums
+enum TipoDeChave{
+  UNKNOWN_TIPO_CHAVE = 0;
+  CPF = 1;
+  CELULAR =2 ;
+  EMAIL = 3;
+  ALEATORIA =4;
 }
 
-message KeymangergrpcRequest {
-  string name = 1;
+enum TipoDeConta{
+  UNKNOWN_TIPO_CONTA = 0;
+  CONTA_CORRENTE = 1;
+  CONTA_POUPANCA = 2;
 }
+/*
+Dados que vem do cliente para
+cadastrar uma nova chave.
+*/
+message RegistraChavePixRequest {
+  string  clienteId = 1;
+  TipoDeChave tipoDeChave = 2;
+  string chave = 3;
+  TipoDeConta tipoDeConta= 4;
 
-message KeymangergrpcReply {
-  string message = 1;
+}
+/*Resposta ao cliente
+após cadastrar a chave
+*/
+message RegistraChavePixResponse {
+  string clienteId = 1;
+  string pixId = 2;
+
 }
