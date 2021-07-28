@@ -1,0 +1,25 @@
+datasources:
+  default:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    driverClassName: org.h2.Driver
+
+
+#datasources:
+#  default:
+#    url: ${JDBC_URL:`jdbc:postgresql://localhost:5432/pix_keymanager_grpc`}
+#    driverClassName: ${DRIVER:org.postgresql.Driver}
+#    username: ${POSTGRES_USER:postgres}
+#    password: ${POSTGRES_PASSWORD:123456}
+#    schema-generate: CREATE_DROP
+#    dialect: ${DIALECT:POSTGRES}
+#jpa.default.properties.hibernate.hbm2ddl.auto: update
+#jpa.default.properties.hibernate.show_sql: true
+#jpa.default.properties.hibernate.format_sql: true
+
+
+##
+# Habilita log do contexto transacional
+##
+logger:
+  levels:
+    io.micronaut.transaction: DEBUG
